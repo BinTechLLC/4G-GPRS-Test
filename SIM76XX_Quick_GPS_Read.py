@@ -1,3 +1,9 @@
+'''
+    Written and debugged by Koltin Binford.
+    BinTech, LLC.
+    
+    This was written as a means to test new 4G/GPRS 76XX series HAT modules.
+'''
 #!/usr/bin/python3.7
 import serial
 import time
@@ -10,16 +16,13 @@ if(runOnce):
     sendSuffix="\r"
     sendData = bytes(sendPrefix+sendCommand+sendSuffix,'utf-8')
     ser.write(sendData)
-    #sleep(1.0)
     serResponse = ser.read(1024)
     print(serResponse.decode('utf-8'))
-    #sleep(1.0)
     sendPrefix="AT+"
     sendCommand="CMGF=1"
     sendSuffix="\r"
     sendData = bytes(sendPrefix+sendCommand+sendSuffix,'utf-8')
     ser.write(sendData)
-    #sleep(1.0)
     serResponse = ser.read(1024)
     print(serResponse.decode('utf-8'))
     sendPrefix="AT+"
@@ -27,7 +30,6 @@ if(runOnce):
     sendSuffix="\r"
     sendData = bytes(sendPrefix+sendCommand+sendSuffix,'utf-8')
     ser.write(sendData)
-    #sleep(1.0)
     serResponse = ser.read(1024)
     print(serResponse.decode('utf-8'))
     sleep(1.0)
@@ -41,7 +43,6 @@ while True:
     sendData = bytes(sendPrefix+sendCommand+sendSuffix,'utf-8')
     try:
         ser.write(sendData)
-        #print("\n")
     except Exception:
         print(Exception)
     serResponse = ser.read(1024)
@@ -55,9 +56,7 @@ while True:
     print("Speed: "+listA[6]+" Km/H")
     print("Cardinal: "+listA[7])
     print("Num of Sat: "+listA[14]+"\n")
-    #print("\n")
     time.sleep(0.1)
-
 ser.close()
 
 
